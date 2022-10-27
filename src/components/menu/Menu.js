@@ -3,7 +3,9 @@ import Categories from './Categories';
 import Types from './Types';
 import Branchs from './Branchs';
 
-function Menu() {
+function Menu(props) {
+  const {selectedBranchIds, setSelectedBranchIds} = props;
+
   return(
     <aside>
       <div id="clear-all" style={{ display: 'block'}}>
@@ -27,7 +29,7 @@ function Menu() {
             <div className="ais-refinement-list--header ais-header">
               <div className="facet-title">Brand</div>
             </div>
-            <Branchs />
+            <Branchs selectedBranchIds={selectedBranchIds} setSelectedBranchIds={setSelectedBranchIds}/>
           </div>
         </div>
         <div id="rating" className="facet" />
