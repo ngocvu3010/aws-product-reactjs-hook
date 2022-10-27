@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Product from './Product';
 
 function Main(props) {
-  const {inputSearch, selectedBranchIds} = props;
+  const {inputSearch, selectedBranchIds, selectedTypeIds} = props;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -12,8 +12,14 @@ function Main(props) {
     };
 
     if (selectedBranchIds.length > 0) {
-      for(let i=0; i < selectedBranchIds.length; i++) {
+      for(let i in selectedBranchIds) {
         url += `&branch_id=${selectedBranchIds[i]}`
+      }
+    }
+
+    if (selectedTypeIds.length > 0) {
+      for(let i in selectedTypeIds) {
+        url += `&type_id=${selectedTypeIds[i]}`
       }
     }
 
@@ -22,7 +28,7 @@ function Main(props) {
       .then((result) => {
         setProducts(result);
       })
-  }, [inputSearch, selectedBranchIds]);
+  }, [inputSearch, selectedBranchIds, selectedTypeIds]);
 
   return(
     <div className="results-wrapper">
