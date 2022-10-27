@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Product from './Product';
 
 function Main(props) {
-  const {inputSearch} = props;
+  const {inputSearch, selectedBranchIds} = props;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -11,12 +11,18 @@ function Main(props) {
       url += `&title=${inputSearch}`
     };
 
+    if (selectedBranchIds.length > 0) {
+      for(let i=0; i < selectedBranchIds.length; i++) {
+        url += `&branch_id=${selectedBranchIds[i]}`
+      }
+    }
+
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
         setProducts(result);
       })
-  }, [inputSearch]);
+  }, [inputSearch, selectedBranchIds]);
 
   return(
     <div className="results-wrapper">

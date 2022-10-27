@@ -6,13 +6,14 @@ import './css/app.css';
 
 function App() {
   const [inputSearch, setInputSearch] = useState('');
+  const [selectedBranchIds, setSelectedBranchIds] = useState([]);
 
   return (
     <div className="container-fluid">
       <Header inputSearch={inputSearch} setInputSearch={setInputSearch} />
       <div className="content-wrapper">
-        <Menu />
-        <Main inputSearch={inputSearch} />
+        <Menu selectedBranchIds={selectedBranchIds} setSelectedBranchIds={setSelectedBranchIds} />
+        <Main inputSearch={inputSearch} selectedBranchIds={selectedBranchIds} />
       </div>
     </div>
   );

@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Branchs() {
-  const branchList = () => {
+function Branchs(props) {
+  const {selectedBranchIds, setSelectedBranchIds} = props;
+
+  const [branchs, setBranchs] = useState([]);
+  useEffect(() => {
+    let url=`http://localhost:3000/branchs`;
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((result) => {
+        setBranchs(result);
+      })
+  }, []);
+
+  const selectBranch = (branchId) => {
+    const newSelectedBranch = [...selectedBranchIds];
+    const currentBrand = newSelectedBranch.indexOf(branchId);
+
+    if(currentBrand === -1){
+      newSelectedBranch.push(branchId);
+    } else {
+      newSelectedBranch.splice(currentBrand, 1);
+    }
+    setSelectedBranchIds(newSelectedBranch);
   };
 
   return(
@@ -13,7 +35,20 @@ function Branchs() {
           <input type="search" name="search" placeholder="Search for other..." autoComplete="off" required className="sbx-sffv__input" />
           <button type="submit" title="Submit your search query." className="sbx-sffv__submit"><svg role="img" aria-label="Search"><use xlinkHref="#sbx-icon-search-12" /></svg></button><button type="reset" title="Clear the search query." className="sbx-sffv__reset"><svg role="img" aria-label="Reset"><use xlinkHref="#sbx-icon-clear-2" /></svg></button></div>
         </form>
-        {branchList}
+        {
+          branchs.map((branch, i) => (
+            <div className="ais-refinement-list--item">
+              <div>
+                <a href="javascript:void(0);" className="facet-item">
+                  <input type="checkbox" className="ais-refinement-list--checkbox"
+                    checked={selectedBranchIds.includes(branch.id)}
+                    onChange={() => selectBranch(branch.id)} />
+                  {branch.name}<span className="facet-count">(686)</span>
+                </a>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   );
