@@ -8,6 +8,14 @@ function App() {
   const [inputSearch, setInputSearch] = useState('');
   const [selectedBranchIds, setSelectedBranchIds] = useState([]);
   const [selectedTypeIds, setSelectedTypeIds] = useState([]);
+  const [categoryId, setCategoryId] = useState('');
+
+  const clearFilter = () => {
+    setInputSearch('');
+    setSelectedBranchIds([]);
+    setSelectedTypeIds([]);
+    setCategoryId('');
+  };
 
   return (
     <div className="container-fluid">
@@ -17,7 +25,11 @@ function App() {
           selectedBranchIds={selectedBranchIds}
           setSelectedBranchIds={setSelectedBranchIds}
           selectedTypeIds={selectedTypeIds}
-          setSelectedTypeIds={setSelectedTypeIds} />
+          setSelectedTypeIds={setSelectedTypeIds}
+          categoryId={categoryId}
+          setCategoryId={setCategoryId}
+          clearFilter={clearFilter}
+          inputSearch={inputSearch} />
         <Main
           inputSearch={inputSearch}
           selectedBranchIds={selectedBranchIds}
