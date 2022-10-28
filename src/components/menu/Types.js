@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Types() {
-  const typeList = () => {
+function Types(props) {
+  const {selectedTypeIds, setSelectedTypeIds} = props;
+  const [types, setTypes] = useState([]);
+
+  useEffect(() => {
+    let url=`http://localhost:3000/types`;
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((result) => {
+        setTypes(result);
+      })
+  }, []);
+
+  const selectType = (typeId) => {
+    const newSelectedType = [...selectedTypeIds];
+    const currentType = newSelectedType.indexOf(typeId);
+
+    if(currentType === -1){
+      newSelectedType.push(typeId);
+    } else {
+      newSelectedType.splice(currentType, 1);
+    }
+    setSelectedTypeIds(newSelectedType);
   };
+
   return(
     <div id="types" className="facet">
       <div className="ais-root ais-refinement-list">
@@ -11,7 +34,19 @@ function Types() {
         </div>
         <div className="ais-body ais-refinement-list--body">
           <div className="ais-refinement-list--list">
-            {typeList}
+            {
+              types.map((type, i) => (
+                <div className="ais-refinement-list--item" key={i}>
+                  <div>
+                    <a href="javascript:void(0);" className="facet-item">
+                      <input type="checkbox" className="ais-refinement-list--checkbox" checked={selectedTypeIds.includes(type.id)}
+                        onChange={() => selectType(type.id)} />
+                        {type.name}<span className="facet-count">(421)</span>
+                    </a>
+                  </div>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>

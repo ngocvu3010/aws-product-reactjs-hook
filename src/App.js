@@ -7,13 +7,21 @@ import './css/app.css';
 function App() {
   const [inputSearch, setInputSearch] = useState('');
   const [selectedBranchIds, setSelectedBranchIds] = useState([]);
+  const [selectedTypeIds, setSelectedTypeIds] = useState([]);
 
   return (
     <div className="container-fluid">
       <Header inputSearch={inputSearch} setInputSearch={setInputSearch} />
       <div className="content-wrapper">
-        <Menu selectedBranchIds={selectedBranchIds} setSelectedBranchIds={setSelectedBranchIds} />
-        <Main inputSearch={inputSearch} selectedBranchIds={selectedBranchIds} />
+        <Menu
+          selectedBranchIds={selectedBranchIds}
+          setSelectedBranchIds={setSelectedBranchIds}
+          selectedTypeIds={selectedTypeIds}
+          setSelectedTypeIds={setSelectedTypeIds} />
+        <Main
+          inputSearch={inputSearch}
+          selectedBranchIds={selectedBranchIds}
+          selectedTypeIds={selectedTypeIds} />
       </div>
     </div>
   );
