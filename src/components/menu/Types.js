@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
 function Types(props) {
-  const {selectedTypeIds, setSelectedTypeIds} = props;
+  const {selectedTypeIds, setSelectedTypeIds, categoryId, categories} = props;
   const [types, setTypes] = useState([]);
 
   useEffect(() => {
-    let url=`http://localhost:3000/types`;
+    let url=`http://localhost:3000/types?`;
+
+    const categoryIds = categories.filter(category => category.id == categoryId).map(category => category.childs.map(child => child.id))[0];
+    if (categoryId !== '') {
+      if (categoryIds == undefined) {
+          url += `&category_id=${categoryId}`;
+      } else {
+        for(let i in categoryIds) {
+          url += `&category_id=${categoryIds[i]}`
+        }
+      }
+    }
 
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
         setTypes(result);
       })
-  }, []);
+  }, [categoryId]);
 
   const selectType = (typeId) => {
     const newSelectedType = [...selectedTypeIds];

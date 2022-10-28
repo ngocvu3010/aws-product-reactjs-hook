@@ -74,7 +74,36 @@
         "rate": 3
     }
     ],
-    "categories": [{"id": 1, "name": "Appliances"}, {"id": 2, "name": "Audio"}, {"id": 3, "name": "Camera"}, {"id": 4, "name": "Cell phone"}],
-    "types": [{"id": 1, "name": "trend cases"}, {"id": 2, "name": "bussines cases"}, {"id": 3, "name": "connectivity"} ],
-    "branchs": [{"id": 1, "name": "HP"}, {"id": 2, "name": "Apple"}, {"id": 3, "name": "Samsung"}]
+    "categories": [
+        {
+          "id": 1,
+          "name": "Appliances",
+          "childs": [
+              {
+                "id": 2,
+                "name": "Dishwasher"
+              },
+              {
+                "id": 3,
+                "name": "Fans"
+              }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Appliances 2",
+          "childs": [
+              {
+                "id": 5,
+                "name": "Dishwasher 2"
+              },
+              {
+                "id": 6,
+                "name": "Fans 2"
+              }
+          ]
+        }
+    ],
+    "types": [{"id": 1, "name": "trend cases", "category_id": 2}, {"id": 2, "name": "bussines cases", "category_id": 3}, {"id": 3, "name": "connectivity", "category_id": 5} ],
+    "branchs": [{"id": 1, "name": "HP", "category_id": 2}, {"id": 2, "name": "Apple", "category_id": 3}, {"id": 3, "name": "Samsung", "category_id": 5}]
 }

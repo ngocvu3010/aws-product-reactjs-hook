@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
 function Branchs(props) {
-  const {selectedBranchIds, setSelectedBranchIds} = props;
+  const {selectedBranchIds, setSelectedBranchIds, categoryId, categories} = props;
 
   const [branchs, setBranchs] = useState([]);
   useEffect(() => {
-    let url=`http://localhost:3000/branchs`;
+    let url=`http://localhost:3000/branchs?`;
 
+    const categoryIds = categories.filter(category => category.id == categoryId).map(category => category.childs.map(child => child.id))[0];
+    if (categoryId !== '') {
+      if (categoryIds == undefined) {
+          url += `&category_id=${categoryId}`;
+      } else {
+        for(let i in categoryIds) {
+          url += `&category_id=${categoryIds[i]}`
+        }
+      }
+    }
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
         setBranchs(result);
       })
-  }, []);
+  }, [categoryId]);
 
   const selectBranch = (branchId) => {
     const newSelectedBranch = [...selectedBranchIds];
