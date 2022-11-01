@@ -2,7 +2,7 @@
     "products": [{
         "id": 1,
         "title": "Amazon - Echo Dot",
-        "price": "1000",
+        "price": 10,
         "image_url": "https://cdn-demo.algolia.com/bestbuy-0118/5538501_sb.jpg",
         "category_id": 1,
         "type_id": 1,
@@ -11,7 +11,7 @@
     }, {
         "id": 2,
         "title": "Google - Chromecast - Black Apple",
-        "price": "1000",
+        "price": 20,
         "image_url": "https://cdn-demo.algolia.com/bestbuy-0118/5538501_sb.jpg",
         "category_id": 2,
         "type_id": 1,
@@ -20,7 +20,7 @@
     }, {
         "id": 3,
         "title": "Apple - EarPods™ with Remote and Mic - White Samsung",
-        "price": "1000",
+        "price": 30,
         "image_url": "https://cdn-demo.algolia.com/bestbuy-0118/5538501_sb.jpg",
         "category_id": 2,
         "type_id": 1,
@@ -29,7 +29,7 @@
     }, {
         "id": 4,
         "title": "Philips - hue A19 Smart LED Light Bulb - White Only",
-        "price": "1000",
+        "price": 40,
         "image_url": "https://cdn-demo.algolia.com/bestbuy-0118/5578849_sb.jpg",
         "category_id": 1,
         "type_id": 1,
@@ -39,7 +39,7 @@
     {
         "id": 1,
         "title": "Amazon - Echo Dot",
-        "price": "1000",
+        "price": 50,
         "image_url": "https://cdn-demo.algolia.com/bestbuy-0118/5538501_sb.jpg",
         "category_id": 2,
         "type_id": 2,
@@ -48,7 +48,7 @@
     }, {
         "id": 2,
         "title": "Google - Chromecast - Black",
-        "price": "1000",
+        "price": 60,
         "image_url": "https://cdn-demo.algolia.com/bestbuy-0118/5538501_sb.jpg",
         "category_id": 1,
         "type_id": 1,
@@ -57,7 +57,7 @@
     }, {
         "id": 3,
         "title": "Apple - EarPods™ with Remote and Mic - White",
-        "price": "1000",
+        "price": 70,
         "image_url": "https://cdn-demo.algolia.com/bestbuy-0118/5538501_sb.jpg",
         "category_id": 1,
         "type_id": 1,
@@ -66,7 +66,7 @@
     }, {
         "id": 4,
         "title": "Philips - hue A19 Smart LED Light Bulb - White Only",
-        "price": "1000",
+        "price": 80,
         "image_url": "https://cdn-demo.algolia.com/bestbuy-0118/5578849_sb.jpg",
         "category_id": 3,
         "type_id": 1,
