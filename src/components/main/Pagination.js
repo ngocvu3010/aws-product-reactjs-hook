@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Pagination({currentPage, handlePagination, totalProduct}) {
-  const totalPerPage = 2;
+  const totalPerPage = 4;
   const totalPage = Math.ceil(totalProduct / totalPerPage);
 
   const pageNumbers = [];
