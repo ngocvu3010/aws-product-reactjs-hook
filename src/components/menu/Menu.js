@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Categories from './Categories';
 import Types from './Types';
 import Branchs from './Branchs';
+import Price from './Price';
 
 
 function Menu(props) {
@@ -13,7 +14,11 @@ function Menu(props) {
     categoryId,
     setCategoryId,
     clearFilter,
-    inputSearch
+    inputSearch,
+    priceStart,
+    setPriceStart,
+    priceEnd,
+    setPriceEnd
   } = props;
 
   const [categories, setCategories] = useState([]);
@@ -29,7 +34,7 @@ function Menu(props) {
   }, []);
 
   const checkDisplayClear = () => {
-    return selectedBranchIds.length > 0 || selectedTypeIds.length > 0 || categoryId !== '' || inputSearch !== '';
+    return selectedBranchIds.length > 0 || selectedTypeIds.length > 0 || categoryId !== '' || inputSearch !== '' || priceStart !== '' || priceEnd !== '';
   };
 
   return(
@@ -69,7 +74,12 @@ function Menu(props) {
           </div>
         </div>
         <div id="rating" className="facet" />
-        <div id="prices" className="facet" />
+        <Price
+          priceStart={priceStart}
+          setPriceStart={setPriceStart}
+          priceEnd={priceEnd}
+          setPriceEnd={setPriceEnd}
+        />
       </section>
       <div className="thank-you">
         Data courtesy of <a href="https://developer.bestbuy.com/">Best Buy</a>

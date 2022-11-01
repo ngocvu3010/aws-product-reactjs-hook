@@ -9,12 +9,16 @@ function App() {
   const [selectedBranchIds, setSelectedBranchIds] = useState([]);
   const [selectedTypeIds, setSelectedTypeIds] = useState([]);
   const [categoryId, setCategoryId] = useState('');
+  const [priceStart, setPriceStart] = useState('');
+  const [priceEnd, setPriceEnd] = useState('');
 
   const clearFilter = () => {
     setInputSearch('');
     setSelectedBranchIds([]);
     setSelectedTypeIds([]);
     setCategoryId('');
+    setPriceStart('');
+    setPriceEnd('');
   };
 
   return (
@@ -29,11 +33,17 @@ function App() {
           categoryId={categoryId}
           setCategoryId={setCategoryId}
           clearFilter={clearFilter}
-          inputSearch={inputSearch} />
+          inputSearch={inputSearch}
+          priceStart={priceStart}
+          setPriceStart={setPriceStart}
+          priceEnd={priceEnd}
+          setPriceEnd={setPriceEnd} />
         <Main
           inputSearch={inputSearch}
           selectedBranchIds={selectedBranchIds}
-          selectedTypeIds={selectedTypeIds} />
+          selectedTypeIds={selectedTypeIds}
+          priceStart={priceStart}
+          priceEnd={priceEnd} />
       </div>
     </div>
   );
