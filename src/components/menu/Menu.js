@@ -3,7 +3,8 @@ import Categories from './Categories';
 import Types from './Types';
 import Branchs from './Branchs';
 import Price from './Price';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {inputSearchSelector} from '../../redux/selector';
 
 function Menu(props) {
   const {
@@ -14,12 +15,13 @@ function Menu(props) {
     categoryId,
     setCategoryId,
     clearFilter,
-    inputSearch,
     priceStart,
     setPriceStart,
     priceEnd,
     setPriceEnd
   } = props;
+
+  const inputSearch = useSelector(inputSearchSelector);
 
   const [categories, setCategories] = useState([]);
 

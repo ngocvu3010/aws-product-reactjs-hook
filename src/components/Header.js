@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {inputSearchChange} from '../redux/actions';
+import {inputSearchSelector} from '../redux/selector';
 
-function Header(props) {
-  const {inputSearch, setInputSearch} = props;
+function Header({inputSearch, setInputSearch}) {
+  const dispatch = useDispatch();
+
+  const handleInputChange = (e) => {
+    const val = e.target.value;
+    setInputSearch(val);
+    dispatch(inputSearchChange(val));
+  }
 
   return(
     <header className="content-wrapper">
@@ -10,7 +19,7 @@ function Header(props) {
       <div className="input-group">
         <input type="text" className="form-control" id="q"
           value={inputSearch}
-          onChange={(e) => setInputSearch(e.target.value)}
+          onChange={handleInputChange}
         />
         <span className="input-group-btn">
           <button className="btn btn-default"><i className="fa fa-search" /></button>

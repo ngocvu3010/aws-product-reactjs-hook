@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Product from './Product';
 import Pagination from './Pagination';
 import TopBar from './TopBar';
+import {useDispatch, useSelector} from 'react-redux';
+import {inputSearchSelector} from '../../redux/selector';
 
 function Main(props) {
-  const {inputSearch, selectedBranchIds, selectedTypeIds, priceStart, priceEnd} = props;
+  const {selectedBranchIds, selectedTypeIds, priceStart, priceEnd} = props;
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState('asc');
+  const inputSearch = useSelector(inputSearchSelector);
 
   useEffect(() => {
     let url=`http://localhost:3000/products?`;

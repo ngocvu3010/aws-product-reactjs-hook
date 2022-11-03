@@ -3,8 +3,13 @@ import Header from './components/Header';
 import Menu from './components/menu/Menu';
 import Main from './components/main/Main';
 import './css/app.css';
+import {useDispatch} from 'react-redux';
+import {inputSearchChange} from './redux/actions';
+
 
 function App() {
+  const dispatch = useDispatch();
+
   const [inputSearch, setInputSearch] = useState('');
   const [selectedBranchIds, setSelectedBranchIds] = useState([]);
   const [selectedTypeIds, setSelectedTypeIds] = useState([]);
@@ -19,6 +24,8 @@ function App() {
     setCategoryId('');
     setPriceStart('');
     setPriceEnd('');
+
+    dispatch(inputSearchChange(''));
   };
 
   return (
@@ -33,13 +40,11 @@ function App() {
           categoryId={categoryId}
           setCategoryId={setCategoryId}
           clearFilter={clearFilter}
-          inputSearch={inputSearch}
           priceStart={priceStart}
           setPriceStart={setPriceStart}
           priceEnd={priceEnd}
           setPriceEnd={setPriceEnd} />
         <Main
-          inputSearch={inputSearch}
           selectedBranchIds={selectedBranchIds}
           selectedTypeIds={selectedTypeIds}
           priceStart={priceStart}
