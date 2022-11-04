@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
+import {selectedBranchIdsChange} from '../../redux/actions';
 
 function Branchs(props) {
   const {selectedBranchIds, setSelectedBranchIds, categoryId, categories} = props;
 
   const [branchs, setBranchs] = useState([]);
   const [inputSearchBranch, setInputSearchBranch] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let url=`http://localhost:3000/branchs?`;
@@ -39,6 +42,7 @@ function Branchs(props) {
       newSelectedBranch.splice(currentBrand, 1);
     }
     setSelectedBranchIds(newSelectedBranch);
+    dispatch(selectedBranchIdsChange(newSelectedBranch));
   };
 
   const searchBranch = (val) => {

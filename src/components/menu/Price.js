@@ -1,4 +1,6 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {priceStartChange, priceEndChange} from '../../redux/actions';
 
 const prices = ["", 1, 80, 160, 240, 480, 1800, 4900];
 const itemPrices = prices.map((item, index) => (
@@ -9,9 +11,15 @@ const itemPrices = prices.map((item, index) => (
 ))
 
 function Price({priceStart, setPriceStart, priceEnd, setPriceEnd}) {
+  const dispatch = useDispatch();
+
   const searchPrice = (start, end) => {
     setPriceStart(start);
     setPriceEnd(end);
+
+    dispatch(priceStartChange(start));
+    dispatch(priceEndChange(end));
+
   };
 
   return(

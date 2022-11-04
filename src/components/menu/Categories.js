@@ -1,8 +1,13 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {categoryIdChange} from '../../redux/actions';
 
 function Categories({categoryId, setCategoryId, categories}) {
+  const dispatch = useDispatch();
+
   const selectCategory = (categoryId) => {
     setCategoryId(categoryId);
+    dispatch(categoryIdChange(categoryId));
   };
 
   const classActive = (category) => {
