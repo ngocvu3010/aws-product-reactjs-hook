@@ -4,7 +4,7 @@ import Menu from './components/menu/Menu';
 import Main from './components/main/Main';
 import './css/app.css';
 import {useDispatch} from 'react-redux';
-import {inputSearchChange} from './redux/actions';
+import {inputSearchChange, selectedBranchIdsChange, selectedTypeIdsChange, categoryIdChange, priceStartChange, priceEndChange} from './redux/actions';
 
 
 function App() {
@@ -26,6 +26,11 @@ function App() {
     setPriceEnd('');
 
     dispatch(inputSearchChange(''));
+    dispatch(selectedBranchIdsChange([]));
+    dispatch(selectedTypeIdsChange([]));
+    dispatch(categoryIdChange(''));
+    dispatch(priceStartChange(''));
+    dispatch(priceEndChange(''));
   };
 
   return (
@@ -44,11 +49,7 @@ function App() {
           setPriceStart={setPriceStart}
           priceEnd={priceEnd}
           setPriceEnd={setPriceEnd} />
-        <Main
-          selectedBranchIds={selectedBranchIds}
-          selectedTypeIds={selectedTypeIds}
-          priceStart={priceStart}
-          priceEnd={priceEnd} />
+        <Main />
       </div>
     </div>
   );

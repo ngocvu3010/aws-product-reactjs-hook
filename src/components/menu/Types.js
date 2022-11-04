@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
+import {selectedTypeIdsChange} from '../../redux/actions';
 
 function Types(props) {
+  const dispatch = useDispatch();
   const {selectedTypeIds, setSelectedTypeIds, categoryId, categories} = props;
   const [types, setTypes] = useState([]);
 
@@ -35,6 +38,7 @@ function Types(props) {
       newSelectedType.splice(currentType, 1);
     }
     setSelectedTypeIds(newSelectedType);
+    dispatch(selectedTypeIdsChange(newSelectedType));
   };
 
   return(
