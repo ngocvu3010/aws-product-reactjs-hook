@@ -41,3 +41,18 @@ export const priceEndChange = (data) => {
     payload: data
   }
 }
+
+export const getListProduct = (url) => {
+  return {
+    type: 'GET_LIST_PRODUCT',
+    payload: url
+  }
+}
+
+
+export const getListProductSuccess = (data) => {
+  return {
+    type: 'GET_LIST_PRODUCT_SUCCESS',
+    payload: data
+  }
+}
