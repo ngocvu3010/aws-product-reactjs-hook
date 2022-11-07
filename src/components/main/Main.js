@@ -3,24 +3,30 @@ import Product from './Product';
 import Pagination from './Pagination';
 import TopBar from './TopBar';
 import {useDispatch, useSelector} from 'react-redux';
+import {getListProduct} from '../../redux/actions';
+
 import {
     inputSearchSelector,
     selectedBranchIdsSelector,
     selectedTypeIdsSelector,
     priceStartSelector,
-    priceEndSelector
+    priceEndSelector,
+    productSelector
   } from '../../redux/selector';
 
 function Main() {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState('asc');
+
+  const dispatch = useDispatch();
 
   const inputSearch = useSelector(inputSearchSelector);
   const selectedBranchIds = useSelector(selectedBranchIdsSelector);
   const selectedTypeIds = useSelector(selectedTypeIdsSelector);
   const priceStart = useSelector(priceStartSelector);
   const priceEnd = useSelector(priceEndSelector);
+  const products = useSelector(productSelector);
 
   useEffect(() => {
     let url=`http://localhost:3000/products?`;
@@ -52,13 +58,12 @@ function Main() {
       url += `&price_lte=${priceEnd}`;
     }
 
-    console.log(url);
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((result) => {
-        setProducts(result);
-      })
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    //     setProducts(result);
+    //   })
+    dispatch(getListProduct(url))
   }, [inputSearch, selectedBranchIds, selectedTypeIds, sortType, priceStart, priceEnd]);
 
   const handlePagination = (page) => {
